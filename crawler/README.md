@@ -1,1 +1,0 @@
-- open as maven project, `mvn install` to resolve dependencies
