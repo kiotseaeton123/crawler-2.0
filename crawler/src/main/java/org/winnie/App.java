@@ -18,7 +18,7 @@ public class App {
             // get html and select css tags
             Document document = Jsoup.connect(url).get();
             Elements paragraphs = document.select("p");
-            Elements links=document.select("a[href]");
+            Elements links=document.select("#mw-content-text [href~=^/wiki/[\\w]+$]");
 
             // number elements in html
             int nparagraphs=paragraphs.size();
