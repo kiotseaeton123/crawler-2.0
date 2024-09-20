@@ -1,0 +1,2 @@
+app uses GeoLite2, MaxMind's free geolocation database
+data file too large for version control, download from MaxMind's official site
