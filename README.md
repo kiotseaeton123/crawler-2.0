@@ -1,3 +1,8 @@
+## About
+- Webpage class encapsulates page access and attributes
+- RobotsCache is singleton class of robots txt information, so robots txt parsing isn't repeated for the same website
+- crawling wiki's Special:Random/Namespace to look for something interesting
+
 ## Instructions 
 1. crawlers written in different languages, so clone branch of interest 
 

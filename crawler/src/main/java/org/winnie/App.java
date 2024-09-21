@@ -5,20 +5,15 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        String url="https://wikipedia.org";
-        String path="/wiki/java";
-        // query specifies links to get from the page
-        String query="#mw-content-text [href~=^/wiki/\\w+$]";
-        
-        // get page and links
-        Webpage page=new Webpage(url,path,query);
-        List<String> links=page.getLinks();
+        // path to special:random/category namespace
+        String url = "https://wikipedia.org";
+        String path = "/wiki/special:random/category";
 
-        Webpage amazon=new Webpage("https://amazon.com");
-        List<String> amazonlinks=amazon.getLinks();
+        // get page and links
+        Webpage wiki = new Webpage(url, path);
+        List<String> links = wiki.getLinks();
 
         // summary info
-        System.out.println(page.toString());
-        System.out.println(amazon.toString());
+        System.out.println(wiki.toString());
     }
 }

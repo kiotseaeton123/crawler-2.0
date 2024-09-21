@@ -35,8 +35,11 @@ public class Webpage {
         this.url = url + path;
 
         try {
+            // get document from url and record response time
             long timestamp = System.currentTimeMillis();
-            Document document = Jsoup.connect(this.url).get();
+
+            Document document = Jsoup.connect(this.url).timeout(10000).followRedirects(true).get();
+
             this.responsetime = System.currentTimeMillis() - timestamp;
 
             // extract html and links, filter robots txt links
