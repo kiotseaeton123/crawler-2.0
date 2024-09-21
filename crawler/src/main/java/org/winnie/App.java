@@ -13,8 +13,8 @@ public class App {
         // get page and links
         Webpage page=new Webpage(url,path,query);
         List<String> links=page.getLinks();
-        for(String link:links){
-            System.out.println(link);
-        }
+
+        // summary info
+        System.out.println(page.toString());
     }
 }
