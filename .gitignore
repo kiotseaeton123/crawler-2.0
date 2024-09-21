@@ -1,3 +1,5 @@
 /crawler/target
 /crawler/.vscode
 
+/data/*.csv
+
