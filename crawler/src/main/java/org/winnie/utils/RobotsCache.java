@@ -56,7 +56,7 @@ public class RobotsCache{
         try {
             robotsfile = Jsoup.connect(url + "/robots.txt").get().text();
         } catch (Exception e) {
-            System.out.println("----------" + url + "no robots file----------");
+            System.out.println("\n\n----------" + url + " has no robots file----------\n\n");
             robotscache.put(url, links);
         }
 

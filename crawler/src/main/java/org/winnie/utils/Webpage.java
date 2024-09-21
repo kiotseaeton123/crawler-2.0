@@ -39,7 +39,7 @@ public class Webpage {
             Document document = Jsoup.connect(this.url).get();
             this.responsetime = System.currentTimeMillis() - timestamp;
 
-            // extract html and links
+            // extract html and links, filter robots txt links
             this.html = document.html();
             this.links = document.select(query).stream()
                     .map(link -> link.attr("href"))
@@ -47,10 +47,10 @@ public class Webpage {
                     .toList();
 
         } catch (HttpStatusException e) {
-            System.out.println("----------http error code: " + e.getStatusCode() + " " + this.url + "----------");
+            System.out.println("\n\n----------http error code: " + e.getStatusCode() + " " + this.url + "----------\n\n");
 
         } catch (IOException e) {
-            System.out.println("----------io exception: " + e.getMessage() + " " + this.url + "----------");
+            System.out.println("\n\n----------io exception: " + e.getMessage() + " " + this.url + "----------\n\n");
         }
     }
 
@@ -69,7 +69,7 @@ public class Webpage {
             String paragraphs = document.select("p").text();
             return paragraphs;
         }
-        return "no paragraphs found";
+        return "\n\n----------no paragraphs found in " + this.url+"----------\n\n";
     }
 
     /**
