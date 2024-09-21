@@ -14,7 +14,11 @@ public class App {
         Webpage page=new Webpage(url,path,query);
         List<String> links=page.getLinks();
 
+        Webpage amazon=new Webpage("https://amazon.com");
+        List<String> amazonlinks=amazon.getLinks();
+
         // summary info
         System.out.println(page.toString());
+        System.out.println(amazon.toString());
     }
 }

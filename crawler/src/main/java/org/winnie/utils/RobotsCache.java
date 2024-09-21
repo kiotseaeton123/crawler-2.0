@@ -54,12 +54,12 @@ public class RobotsCache{
 
         // return empty hashset if there is no robots file
         try {
-            robotsfile = Jsoup.connect(url + "/robots.txt").get().text();
+            robotsfile = Jsoup.connect(url + "/robots.txt").get().wholeText();
         } catch (Exception e) {
             System.out.println("\n\n----------" + url + " has no robots file----------\n\n");
             robotscache.put(url, links);
         }
-
+   
         // match disallowed url paths
         Pattern pattern = Pattern.compile("^Disallow: (.*)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(robotsfile);
