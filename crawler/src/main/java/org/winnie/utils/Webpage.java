@@ -72,6 +72,13 @@ public class Webpage {
         return this.links;
     }
 
+    public String getTitle(){
+        if(!this.html.isEmpty()){
+            Document document=Jsoup.parse(this.html);
+            return document.title();
+        }
+        return "\n\n----------no title found in " + this.url + "----------\n\n";
+    }
     public String getParagraphs() {
         if (!this.html.isEmpty()) {
             Document document = Jsoup.parse(this.html);
@@ -85,7 +92,7 @@ public class Webpage {
      * @return summary string
      */
     public String toString() {
-        return "----------" + this.url + " in " + this.responsetime + " ms ----------";
+        return "---" + this.url + " in " + this.responsetime + " ms";
     }
 
 }
