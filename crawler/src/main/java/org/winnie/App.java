@@ -94,15 +94,32 @@ public class App {
         }
 
         // print data summary
+        HashSet<User> anomusers = new HashSet<>();
+
         for (String topiclink : data.keySet()) {
             System.out.println("\n\n" + topiclink);
             HashSet<User> users = data.get(topiclink);
 
             for (User user : users) {
                 System.out.print(user.getUserName() + ", ");
+                if (user.isAnom()) {
+                    anomusers.add(user);
+                }
             }
             System.out.println("\n\n----------");
         }
 
+        System.out.println("\n----------ANONYMOUS USERS----------");
+        for (User user : anomusers) {
+            System.out.println(user.getUserName());
+        }
+
+        /** example anom IPs
+         * 92.112.3.99
+         * 2003:D2:5720:CE1C:CC33:306A:4B91:DD9C
+         * 77.52.211.26
+         * 77.52.211.26
+         * 188.163.104.39
+         */
     }
 }
