@@ -2,6 +2,9 @@ package org.winnie;
 
 import org.winnie.utils.NoLinksFoundException;
 import org.winnie.utils.Webpage;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import java.util.List;
 
 public class App {
@@ -28,6 +31,7 @@ public class App {
                 // crawl edit history
                 parseHistory(links);
 
+                // successfull connection, break while loop
                 break;
 
             } catch (NoLinksFoundException e) {
@@ -47,14 +51,25 @@ public class App {
                 // get topic history page and its edit history link
                 Webpage page = new Webpage(wikiurl, link, "li#ca-history a[href]");
                 String historylink = page.getLinks().get(0);
-                System.out.println(historylink);
 
                 // get edit history page and parse users
                 Webpage historypage = new Webpage(wikiurl, historylink, ".mw-userlink");
                 List<String> userlinks = historypage.getLinks();
 
-                for (String user : userlinks) {
-                    System.out.println(user);
+                // fetch user and anonymous user patterns
+                Pattern userpattern=Pattern.compile("/wiki/User:(.*)");
+                Pattern anompattern=Pattern.compile("/wiki/Special:Contributions/(.*)");
+
+                for (String userlink : userlinks) {
+                    Matcher usermatcher=userpattern.matcher(userlink);
+                    Matcher anommatcher=anompattern.matcher(userlink);
+                    
+                    if(usermatcher.find()){
+                        System.out.println(usermatcher.group(1));
+                    }
+                    if(anommatcher.find()){
+                        System.out.println(anommatcher.group(1));
+                    }
                 }
 
             } catch (NoLinksFoundException e) {
