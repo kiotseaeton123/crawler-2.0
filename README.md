@@ -5,7 +5,7 @@
 
 - crawling wiki's Special:Random/Namespace to look for something interesting
 
-- note: crawler strictly abides to website crawling instructions, all forbidden links are filtered at Webpage creation
+- crawler abides to website crawling instructions, all forbidden links are filtered at Webpage creation
 
 ## Instructions 
 1. crawlers written in different languages, so clone branch of interest 
