@@ -14,29 +14,29 @@ public class App {
         String query = ".mw-category-group a[href]";
 
         // encase in while loop if multiple attempts necessary
-        int attempts=3;
-        while(attempts>0){
+        int attempts = 3;
+        while (attempts > 0) {
             try {
                 // get category page and links
                 Webpage wiki = new Webpage(wikiurl, path, query);
-    
+
                 List<String> links = wiki.getLinks();
-    
+
                 // summary info
                 System.out.println(wiki.toString());
-    
+
                 // crawl edit history
                 parseHistory(links);
 
                 break;
-    
+
             } catch (NoLinksFoundException e) {
                 System.out.println(e.getMessage());
                 attempts--;
             }
-    
+
         }
-        
+
     }
 
     public static void parseHistory(List<String> links) {
@@ -48,13 +48,14 @@ public class App {
                 Webpage page = new Webpage(wikiurl, link, "li#ca-history a[href]");
                 String historylink = page.getLinks().get(0);
                 System.out.println(historylink);
-                // // get edit history page and parse users
-                // Webpage historypage=new Webpage(wikiurl,historylink,".mw-user-link a[href]");
-                // List<String> userlinks=historypage.getLinks();
 
-                // for(String user:userlinks){
-                //     System.out.println(user);
-                // }
+                // get edit history page and parse users
+                Webpage historypage = new Webpage(wikiurl, historylink, ".mw-userlink");
+                List<String> userlinks = historypage.getLinks();
+
+                for (String user : userlinks) {
+                    System.out.println(user);
+                }
 
             } catch (NoLinksFoundException e) {
                 System.out.println(e.getMessage());
