@@ -1,6 +1,7 @@
 package org.winnie.utils;
 
 import org.jsoup.Jsoup;
+import org.jsoup.Connection;
 import org.jsoup.nodes.Document;
 import org.jsoup.HttpStatusException;
 import java.io.IOException;
@@ -15,7 +16,9 @@ public class Webpage {
     private long responsetime;
 
     /**
-     * webpage constructor fetches html and links according to css selector, use generic link selector if none provided
+     * webpage constructor fetches html and links according to css selector, use
+     * generic link selector if none provided
+     * 
      * @param url
      * @param path  - url path
      * @param query - cssQuery, use css selector to extract elements from document
@@ -35,10 +38,12 @@ public class Webpage {
         this.url = url + path;
 
         try {
-            // get document from url and record response time
+            // get web document from url, save redirected url, and record response time
             long timestamp = System.currentTimeMillis();
 
-            Document document = Jsoup.connect(this.url).timeout(10000).followRedirects(true).get();
+            Connection connection=Jsoup.connect(this.url).followRedirects(true);
+            Document document = connection.get();
+            this.url=connection.response().url().toString();
 
             this.responsetime = System.currentTimeMillis() - timestamp;
 
@@ -50,7 +55,8 @@ public class Webpage {
                     .toList();
 
         } catch (HttpStatusException e) {
-            System.out.println("\n\n----------http error code: " + e.getStatusCode() + " " + this.url + "----------\n\n");
+            System.out
+                    .println("\n\n----------http error code: " + e.getStatusCode() + " " + this.url + "----------\n\n");
 
         } catch (IOException e) {
             System.out.println("\n\n----------io exception: " + e.getMessage() + " " + this.url + "----------\n\n");
@@ -72,7 +78,7 @@ public class Webpage {
             String paragraphs = document.select("p").text();
             return paragraphs;
         }
-        return "\n\n----------no paragraphs found in " + this.url+"----------\n\n";
+        return "\n\n----------no paragraphs found in " + this.url + "----------\n\n";
     }
 
     /**
