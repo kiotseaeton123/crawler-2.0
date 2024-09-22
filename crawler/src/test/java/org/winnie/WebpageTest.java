@@ -18,7 +18,7 @@ public class WebpageTest {
     }
 
     @Test
-    public void testGetLinks(){
+    public void testGetLinks() throws NoLinksFoundException{
         assertEquals(1, webpage.getLinks().size());
         assertEquals("https://www.iana.org/domains/example", webpage.getLinks().get(0));
     }

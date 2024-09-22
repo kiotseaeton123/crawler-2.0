@@ -41,9 +41,9 @@ public class Webpage {
             // get web document from url, save redirected url, and record response time
             long timestamp = System.currentTimeMillis();
 
-            Connection connection=Jsoup.connect(this.url).followRedirects(true);
+            Connection connection = Jsoup.connect(this.url).followRedirects(true);
             Document document = connection.get();
-            this.url=connection.response().url().toString();
+            this.url = connection.response().url().toString();
 
             this.responsetime = System.currentTimeMillis() - timestamp;
 
@@ -68,17 +68,21 @@ public class Webpage {
      * 
      * @return attributes or html info
      */
-    public List<String> getLinks() {
+    public List<String> getLinks() throws NoLinksFoundException{
+        if (this.links.isEmpty()) {
+            throw new NoLinksFoundException("----------no links found!----------");
+        }
         return this.links;
     }
 
-    public String getTitle(){
-        if(!this.html.isEmpty()){
-            Document document=Jsoup.parse(this.html);
+    public String getTitle() {
+        if (!this.html.isEmpty()) {
+            Document document = Jsoup.parse(this.html);
             return document.title();
         }
         return "\n\n----------no title found in " + this.url + "----------\n\n";
     }
+
     public String getParagraphs() {
         if (!this.html.isEmpty()) {
             Document document = Jsoup.parse(this.html);
