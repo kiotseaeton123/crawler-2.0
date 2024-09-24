@@ -6,9 +6,11 @@
 
 - RobotsCache is singleton class of robots txt information, so robots txt parsing isn't repeated for the same website
 
-- crawling wiki's Special:Random/Namespace to look for something interesting
+- crawler abides to website crawling instructions, forbidden links are filtered at Webpage creation
 
-- crawler abides to website crawling instructions, all forbidden links are filtered at Webpage creation
+- example project crawls wiki's Special:Random/Categories namespace and subsequent links, extracts all users in edit history of each topic and creates a User instance for each contributor
+
+- working on geolocation resolver for anonymous contributors, whose username is stored as an IP address
 
 ## Instructions 
 1. crawlers written in different languages, so clone branch of interest 
