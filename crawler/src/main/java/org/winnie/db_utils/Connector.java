@@ -1,4 +1,4 @@
-package org.winnie.dbutils;
+package org.winnie.db_utils;
 
 import java.io.File;
 import java.sql.Connection;

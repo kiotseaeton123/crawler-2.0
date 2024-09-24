@@ -1,10 +1,9 @@
 package org.winnie;
 
+import org.winnie.db_utils.Table;
 import org.winnie.utils.NoLinksFoundException;
 import org.winnie.utils.Webpage;
 import org.winnie.utils.User;
-
-import org.winnie.dbutils.CreateTable;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -17,8 +16,11 @@ public class App {
     static String wikiurl = "https://wikipedia.org";
 
     public static void main(String[] args) {
-        // crawlCategory();
-        CreateTable.createTables();
+        // read geodata.db
+        Table.createTables();
+        
+        // start crawling
+        crawlCategory();
     }
 
     public static void crawlCategory(){
@@ -91,7 +93,6 @@ public class App {
                         contributors.add(new User(anommatcher.group(1), userlink, true));
                     }
                 }
-
                 // store topic link with contributors
                 data.put(link, contributors);
 

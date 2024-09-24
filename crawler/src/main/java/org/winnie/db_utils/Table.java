@@ -1,10 +1,10 @@
-package org.winnie.dbutils;
+package org.winnie.db_utils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreateTable {
+public class Table {
     public static void createTables(){
         String geolocationtable="CREATE TABLE IF NOT EXISTS geolocation (geoname_id INTEGER PRIMARY KEY, continent_code TEXT, country_iso_code TEXT);";
 
