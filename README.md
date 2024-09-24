@@ -2,11 +2,11 @@
 - use web crawler to tap into the power of systematic data extraction, large scale information retrieval, and real time web monitoring
 
 ## Design
+- Object Oriented design to support multi-site and multi-page crawling
+
 - Webpage class encapsulates page access and attributes
 
-- RobotsCache is singleton class of robots txt information, so robots txt parsing isn't repeated for the same website
-
-- crawler abides to website crawling instructions, forbidden links are filtered at Webpage creation
+- Robots txt cached in singleton class, disallowed links are filtered at creation of Webpage instance
 
 - example project crawls wiki's Special:Random/Categories namespace and subsequent links, extracts all users in edit history of each topic and creates a User instance for each contributor
 
