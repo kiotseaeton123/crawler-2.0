@@ -1,4 +1,7 @@
 ## About
+- use web crawler to tap into the power of systematic data extraction, large scale information retrieval, and real time web monitoring
+
+## Design
 - Webpage class encapsulates page access and attributes
 
 - RobotsCache is singleton class of robots txt information, so robots txt parsing isn't repeated for the same website
