@@ -1,5 +1,6 @@
 ### About
-- geolocation resolver app uses GeoLite2, MaxMind's free geolocation database
+- crawler project contains geolocation resolver package
+- geolocation resolver uses GeoLite2, MaxMind's free geolocation database
 - data file too large for version control, download from MaxMind's official site
 
 ### Convenient Tools for Data Processing

@@ -37,10 +37,11 @@ def cidr2ipv4(cidr):
     # return start and end of ip range
     return ipstart,ipend
 
+# ipv6 values stored as str because values too large to fit SQLite INTEGER
 def cidr2ipv6(cidr):
     network=ipaddress.IPv6Network(cidr,strict=False)
-    ipstart=int(network.network_address)
-    ipend=int(network.broadcast_address)
+    ipstart=str(network.network_address)
+    ipend=str(network.broadcast_address)
     return ipstart,ipend
 
 # load data
@@ -52,9 +53,9 @@ def load_data():
     ipv4['ipstart'],ipv4['ipend']=zip(*ipv4['network'].apply(cidr2ipv4))
     ipv4.to_sql('ipv4',connection,if_exists='replace',index=False)
 
-    # ipv6=pd.read_csv('ipv6.csv')
-    # ipv6['ipstart'],ipv6['ipend']=zip(*ipv6['network'].apply(cidr2ipv6))
-    # ipv6.to_sql('ipv6', connection, if_exists='replace', index=False)
+    ipv6=pd.read_csv('ipv6.csv')
+    ipv6['ipstart'],ipv6['ipend']=zip(*ipv6['network'].apply(cidr2ipv6))
+    ipv6.to_sql('ipv6', connection, if_exists='replace', index=False)
 
 
 # main
