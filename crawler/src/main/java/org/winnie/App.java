@@ -4,6 +4,8 @@ import org.winnie.utils.NoLinksFoundException;
 import org.winnie.utils.Webpage;
 import org.winnie.utils.User;
 
+import org.winnie.dbutils.CreateTable;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.HashMap;
@@ -15,6 +17,11 @@ public class App {
     static String wikiurl = "https://wikipedia.org";
 
     public static void main(String[] args) {
+        // crawlCategory();
+        CreateTable.createTables();
+    }
+
+    public static void crawlCategory(){
         // path to special:random/category namespace
         String path = "/wiki/special:random/category";
         String query = ".mw-category-group a[href]";
