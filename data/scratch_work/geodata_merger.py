@@ -22,7 +22,7 @@ ipv6.to_sql('ipv6', connection, index=False, if_exists='replace')
 ipv4.to_sql('ipv4', connection, index=False, if_exists='replace')
 countrycodes.to_sql('countrycodes', connection, index=False, if_exists='replace')
 
-# merge
+# merge query
 mergequery="""
 SELECT
     ipv6.geoname_id AS geoname_id,
