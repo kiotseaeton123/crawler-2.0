@@ -10,6 +10,7 @@ import java.sql.*;
 
 /**
  * this class resolves ipv4 and ipv6 to geolocation
+ * 
  * @author winnie
  */
 public class IP2GeoResolver {
@@ -17,6 +18,7 @@ public class IP2GeoResolver {
 
     /**
      * constructor stores database connection
+     * 
      * @param db - database instance
      */
     public IP2GeoResolver(Database db) {
@@ -24,7 +26,40 @@ public class IP2GeoResolver {
     }
 
     /**
+     * method checks if address is ipv4
+     * 
+     * @param ip - ip address
+     * @return - boolean is ipv4
+     */
+    public boolean isIPv4(String ip) {
+        try {
+            InetAddress address = InetAddress.getByName(ip);
+            return address instanceof java.net.Inet4Address;
+
+        } catch (UnknownHostException e) {
+            return false;
+        }
+    }
+
+    /**
+     * method checks if ipv6
+     * 
+     * @param ip - address
+     * @return - boolean is ipv6
+     */
+    public boolean isIPv6(String ip) {
+        try {
+            InetAddress address = InetAddress.getByName(ip);
+            return address instanceof java.net.Inet4Address;
+            
+        } catch (UnknownHostException e) {
+            return false;
+        }
+    }
+
+    /**
      * method resolves ipv4 to geolocation
+     * 
      * @param ip - ipv4 address
      * @return continent, country pair
      */
@@ -52,6 +87,7 @@ public class IP2GeoResolver {
 
     /**
      * method resolves ipv6 to geolocation
+     * 
      * @param ip - ipv6 address
      * @return continent, country pair
      */

@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * this class represents a sqlite database
+ * 
  * @author winnie
  */
 public class Database {
@@ -25,6 +26,7 @@ public class Database {
         this.base = System.getProperty("user.dir");
         // path to db file
         String path = this.base + File.separator + ".." + File.separator + "data" + File.separator + db;
+
         // db url
         this.url = "jdbc:sqlite:" + path;
         this.connection = connect();
@@ -48,18 +50,21 @@ public class Database {
 
     /**
      * method returns database connection
+     * 
      * @return Connection
      */
-    public Connection getConnection(){
+    public Connection getConnection() {
         return this.connection;
     }
-    
+
     /**
      * method creates db table
      * 
-     * @param query - a sql query
+     * @param query   - a sql query
+     * @param columns - column definitions, eg. id INT PRIMARY KEY, name TEXT
      */
-    public void createTable(String query) {
+    public void createTable(String table, String columns) {
+        String query = "CREATE TABLE IF NOT EXISTS " + table + " (" + columns + ");";
         try {
             Statement statement = this.connection.createStatement();
             statement.execute(query);
@@ -70,70 +75,34 @@ public class Database {
     }
 
     /**
-     * method inserts data to table in db
-     * 
-     * @param table - db table
-     * @param column - db column
-     * @param value - value to insert to table
-     */
-    public void insertData(String table, String column, String value) {
-
-        String query = "INSERT INTO " + table + "(" + column + ") VALUES (" + value + ")";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.execute();
-            System.out.println(column + ":" + value + " inserted to " + table);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
      * method inserts 2 fields to a table
      * 
-     * @param table - db table
+     * @param table   - db table
      * @param column1 - first column
-     * @param value1 - first data
+     * @param value1  - first data
      * @param column2 - second column
-     * @param value2 - second data
+     * @param value2  - second data
      */
     public void insertData(String table, String column1, String value1, String column2, String value2) {
 
-        String query = "INSERT INTO " + table + "(" + column1 + "," + column2 + ") VALUES (" + value1 + "," + value2
-                + ")";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.execute();
-            System.out.println("-----"+column1 + ":" + value1 + " and " + column2 + ":" + value2 + " inserted to " + table+"-----");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+        String query = "INSERT INTO " + table + "(" + column1 + ", "+column2+") VALUES (?, ?)";
 
-    /**
-     * method to query database
-     * @param query - sql query
-     * @return query result
-     */
-    public String query(String query) {
-        String data = "";
         try {
             PreparedStatement statement = this.connection.prepareStatement(query);
-            ResultSet result = statement.executeQuery();
-            if (result.next()) {
-                data = result.getString(1);
-            } else {
-                System.out.println("-----no data found-----");
-            }
+            statement.setString(1, value1);
+            statement.setString(2, value2);
+            statement.execute();
+            System.out.println("-----" + column1 + ":" + value1 + " and " + column2 + ":" + value2 + " inserted to "
+                    + table + "-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return data;
     }
 
     /**
      * method to query table field, returns all rows in field
-     * @param table - db table
+     * 
+     * @param table  - db table
      * @param column - db column
      * @return return list of strings
      */
@@ -154,8 +123,9 @@ public class Database {
 
     /**
      * this method queries table field with condition
-     * @param table - db table
-     * @param column - db column
+     * 
+     * @param table     - db table
+     * @param column    - db column
      * @param condition - WHERE condition
      * @return String
      */

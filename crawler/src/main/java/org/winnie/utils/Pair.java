@@ -30,7 +30,7 @@ public class Pair<K,V> {
      * value getter
      * @return value type
      */
-    public V getV(){
+    public V getValue(){
         return this.value;
     }
 
