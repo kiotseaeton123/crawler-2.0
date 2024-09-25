@@ -5,6 +5,7 @@ import org.winnie.db_utils.Database;
 import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Arrays;
 import java.sql.*;
 
 
@@ -40,7 +41,7 @@ public class IP2GeoResolver {
     public String resolveIPv6(String ip){
         try{
             byte[] addressbytes=InetAddress.getByName(ip).getAddress();
-
+            System.out.println("address bytes: "+Arrays.toString(addressbytes));
             String query="SELECT geolocation.continent_code, geolocation.country_iso_code FROM ipv6 JOIN geolocation ON ipv6.geoname_id=geolocation.geoname_id WHERE ? BETWEEN ipv6.ipstart AND ipv6.ipend;";
 
             PreparedStatement statement=this.connection.prepareStatement(query);

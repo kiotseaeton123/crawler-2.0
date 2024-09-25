@@ -24,7 +24,7 @@ public class App {
         String result=resolver.resolveIPv4("1.0.1.25");
         System.out.println("result " + result);
 
-        String result1=resolver.resolveIPv6("2001:0db8:85a3:0000:0000:8a2e:0370:7334");
+        String result1=resolver.resolveIPv6("2001:0200:0000:0000:0000:0000:0000:0001");
         System.out.println("result1 " + result1);
         db.close();
         // start crawling
