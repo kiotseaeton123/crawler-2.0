@@ -9,6 +9,10 @@ import org.winnie.db_utils.Database;
 import org.winnie.geolocation_utils.IP2GeoResolver;
 import org.winnie.utils.Pair;
 
+/**
+ * ip resolver unit test
+ * @author winnie
+ */
 public class IP2GeoResolverTest {
 
     private IP2GeoResolver resolver;

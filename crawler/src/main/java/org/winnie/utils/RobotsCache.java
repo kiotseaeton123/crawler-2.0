@@ -10,6 +10,7 @@ import org.jsoup.Jsoup;
 /**
  * singleton robots txt cache manager
  * prevent duplicate robots txt parsing for webpages in same website
+ * @author winnie
  */
 public class RobotsCache{
     
@@ -17,12 +18,14 @@ public class RobotsCache{
     // cached robots txt
     private static HashMap<String, HashSet<String>> robotscache = new HashMap<>();
 
-    // private instantiation
+    /**
+     * private instantiation, constructor
+     */
     private RobotsCache(){}
 
     /**
-     * enable method call before instantiation, ensure only a single instance, lazy instantiation of instance
-     * @return singleton RobotsCache instance
+     * enable method call before instantiation, ensure only a single instance, lazy instantiation of singleton instance
+     * @return RobotsCache instance
      */
     public static synchronized RobotsCache getInstance(){
         if(instance==null){

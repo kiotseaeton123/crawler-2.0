@@ -7,6 +7,10 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * unit test robots cache class
+ * @author winnie
+ */
 public class RobotsCacheTest {
     private String url;
 

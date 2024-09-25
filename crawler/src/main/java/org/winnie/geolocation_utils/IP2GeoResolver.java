@@ -6,16 +6,28 @@ import org.winnie.utils.Pair;
 import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Arrays;
 import java.sql.*;
 
+/**
+ * this class resolves ipv4 and ipv6 to geolocation
+ * @author winnie
+ */
 public class IP2GeoResolver {
     private Connection connection;
 
+    /**
+     * constructor stores database connection
+     * @param db
+     */
     public IP2GeoResolver(Database db) {
         this.connection = db.getConnection();
     }
 
+    /**
+     * method resolves ipv4 to geolocation
+     * @param ip
+     * @return
+     */
     public Pair<String, String> resolveIPv4(String ip) {
         try {
             byte[] addressbytes = InetAddress.getByName(ip).getAddress();
@@ -38,6 +50,11 @@ public class IP2GeoResolver {
         return null;
     }
 
+    /**
+     * method resolves ipv6 to geolocation
+     * @param ip
+     * @return
+     */
     public Pair<String, String> resolveIPv6(String ip) {
         try {
             byte[] addressbytes = InetAddress.getByName(ip).getAddress();

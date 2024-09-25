@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * main class
+ * @author winnie
+ */
 public class App {
 
     static String wikiurl = "https://wikipedia.org";

@@ -5,7 +5,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * this class represents a sqlite database
+ * @author winnie
+ */
 public class Database {
     // base directory, db url, db connection
     private String base;
@@ -13,7 +16,7 @@ public class Database {
     private Connection connection;
 
     /**
-     * takes database name and establishes connection
+     * constructor takes database name and establishes connection
      * 
      * @param db - db name
      */
@@ -28,7 +31,7 @@ public class Database {
     }
 
     /**
-     * establish db connection
+     * method establishes db connection
      * 
      * @return connection
      */
@@ -43,15 +46,18 @@ public class Database {
         return connection;
     }
 
-    // get connection
+    /**
+     * method returns database connection
+     * @return Connection
+     */
     public Connection getConnection(){
         return this.connection;
     }
     
     /**
-     * create db table
+     * method creates db table
      * 
-     * @param query
+     * @param query - a sql query
      */
     public void createTable(String query) {
         try {
@@ -64,7 +70,7 @@ public class Database {
     }
 
     /**
-     * insert data to table in db
+     * method inserts data to table in db
      * 
      * @param table
      * @param column
@@ -82,7 +88,15 @@ public class Database {
         }
     }
 
-    // insert 2 data to a table
+    /**
+     * method inserts 2 fields to a table
+     * 
+     * @param table
+     * @param column1
+     * @param value1
+     * @param column2
+     * @param value2
+     */
     public void insertData(String table, String column1, String value1, String column2, String value2) {
 
         String query = "INSERT INTO " + table + "(" + column1 + "," + column2 + ") VALUES (" + value1 + "," + value2
@@ -97,8 +111,8 @@ public class Database {
     }
 
     /**
-     * query table
-     * @return list of data
+     * method to query database
+     * @return query result
      */
     public String query(String query) {
         String data = "";
@@ -116,6 +130,12 @@ public class Database {
         return data;
     }
 
+    /**
+     * method to query table field, returns all rows in field
+     * @param table
+     * @param column
+     * @return List<String>
+     */
     public List<String> queryColumn(String table, String column) {
         List<String> data = new ArrayList<>();
         String query = "SELECT " + column + " FROM " + table;
@@ -131,7 +151,13 @@ public class Database {
         return data;
     }
 
-    // query table with condition
+    /**
+     * this method queries table field with condition
+     * @param table
+     * @param column
+     * @param condition
+     * @return String
+     */
     public String queryElement(String table, String column, String condition) {
         String data = "";
         String query = "SELECT " + column + " FROM " + table + " WHERE " + condition;
@@ -150,7 +176,7 @@ public class Database {
     }
 
     /**
-     * close connection
+     * close database connection
      */
     public void close() {
         try {
