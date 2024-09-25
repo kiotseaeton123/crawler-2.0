@@ -3,11 +3,13 @@
 
 - project contains a complete ip to geolocation resolver package `geolocation_utils`, using MaxMind's free geolocation database GeoLite2 
 
-- `data`directory contains data processing scripts and outputs `geodata.db` 
+- `/data`data processing scripts, outputs `geodata.db` 
 
-- `src/main` contains web crawler application and `src/test` contains unit tests for utility classes
+- `/src/main` web crawler application 
 
-- project documentation in `apidocs.zip`
+- `/src/test` unit tests for utility classes
+
+- `/apidocs.zip`project documentation
 
 ## Design
 - Object Oriented design to support multi-site and multi-page crawling
