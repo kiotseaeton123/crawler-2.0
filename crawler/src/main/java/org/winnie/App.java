@@ -1,6 +1,7 @@
 package org.winnie;
 
 import org.winnie.db_utils.Database;
+import org.winnie.geolocation_utils.IP2GeoResolver;
 import org.winnie.utils.NoLinksFoundException;
 import org.winnie.utils.Webpage;
 import org.winnie.utils.User;
@@ -17,10 +18,17 @@ public class App {
 
     public static void main(String[] args) {
         // read geodata.db
+        Database db=new Database("geodata.db");
+        IP2GeoResolver resolver=new IP2GeoResolver(db);
 
-        
+        String result=resolver.resolveIPv4("1.0.1.25");
+        System.out.println("result " + result);
+
+        String result1=resolver.resolveIPv6("2001:0db8:85a3:0000:0000:8a2e:0370:7334");
+        System.out.println("result1 " + result1);
+        db.close();
         // start crawling
-        crawlCategory();
+        // crawlCategory();
     }
 
     public static void crawlCategory(){

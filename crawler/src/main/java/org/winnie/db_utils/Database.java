@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Database {
     // base directory, db url, db connection
     private String base;
@@ -22,8 +23,8 @@ public class Database {
         // path to db file
         String path = this.base + File.separator + ".." + File.separator + "data" + File.separator + db;
         // db url
-        this.url = "jdbc:sqlite:" + this.base + path;
-        this.connection = getConnection();
+        this.url = "jdbc:sqlite:" + path;
+        this.connection = connect();
     }
 
     /**
@@ -31,7 +32,7 @@ public class Database {
      * 
      * @return connection
      */
-    private Connection getConnection() {
+    private Connection connect() {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(this.url);
@@ -42,6 +43,11 @@ public class Database {
         return connection;
     }
 
+    // get connection
+    public Connection getConnection(){
+        return this.connection;
+    }
+    
     /**
      * create db table
      * 
