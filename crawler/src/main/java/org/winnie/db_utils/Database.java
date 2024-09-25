@@ -36,7 +36,7 @@ public class Database {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(this.url);
-            System.out.println("database connection established");
+            System.out.println("-----database connection established-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -57,7 +57,7 @@ public class Database {
         try {
             Statement statement = this.connection.createStatement();
             statement.execute(query);
-            System.out.println("table created");
+            System.out.println("-----table created-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -90,7 +90,7 @@ public class Database {
         try {
             PreparedStatement statement = this.connection.prepareStatement(query);
             statement.execute();
-            System.out.println(column1 + ":" + value1 + " and " + column2 + ":" + value2 + " inserted to " + table);
+            System.out.println("-----"+column1 + ":" + value1 + " and " + column2 + ":" + value2 + " inserted to " + table+"-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -108,7 +108,7 @@ public class Database {
             if (result.next()) {
                 data = result.getString(1);
             } else {
-                System.out.println("no data found");
+                System.out.println("-----no data found-----");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -155,7 +155,7 @@ public class Database {
     public void close() {
         try {
             this.connection.close();
-            System.out.println("database connection closed");
+            System.out.println("-----database connection closed-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.winnie.db_utils.Database;
 import org.winnie.geolocation_utils.IP2GeoResolver;
+import org.winnie.utils.Pair;
 
 public class IP2GeoResolverTest {
 
@@ -21,18 +22,18 @@ public class IP2GeoResolverTest {
 
     @Test
     public void testResolveIP4() {
-        String result = resolver.resolveIPv4("1.0.1.25");
-        assertEquals(result, "AS,CN");
+        Pair<String, String> result = resolver.resolveIPv4("1.0.1.25");
+        assertEquals(result, new Pair<>("AS", "CN"));
     }
 
     @Test
     public void testResolveIP6() {
-        String result = resolver.resolveIPv6("2001:0200:0000:0000:0000:0000:0000:0001");
-        assertEquals(result, "AS,JP");
+        Pair<String, String> result = resolver.resolveIPv6("2001:0200:0000:0000:0000:0000:0000:0001");
+        assertEquals(result, new Pair<>("AS", "JP"));
     }
 
     @After
-    public void close(){
+    public void close() {
         db.close();
     }
 }
