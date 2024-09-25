@@ -26,7 +26,7 @@ public class IP2GeoResolver {
     /**
      * method resolves ipv4 to geolocation
      * @param ip - ipv4 address
-     * @return
+     * @return continent, country pair
      */
     public Pair<String, String> resolveIPv4(String ip) {
         try {
@@ -53,7 +53,7 @@ public class IP2GeoResolver {
     /**
      * method resolves ipv6 to geolocation
      * @param ip - ipv6 address
-     * @return
+     * @return continent, country pair
      */
     public Pair<String, String> resolveIPv6(String ip) {
         try {

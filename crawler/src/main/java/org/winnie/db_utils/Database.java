@@ -112,6 +112,7 @@ public class Database {
 
     /**
      * method to query database
+     * @param query - sql query
      * @return query result
      */
     public String query(String query) {
@@ -134,7 +135,7 @@ public class Database {
      * method to query table field, returns all rows in field
      * @param table - db table
      * @param column - db column
-     * @return List<String>
+     * @return return list of strings
      */
     public List<String> queryColumn(String table, String column) {
         List<String> data = new ArrayList<>();

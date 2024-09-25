@@ -18,11 +18,18 @@ public class App {
 
     static String wikiurl = "https://wikipedia.org";
 
+    /**
+     * main function
+     * @param args - cmd line args
+     */
     public static void main(String[] args) {
         // start crawling
         crawlCategory();
     }
 
+    /**
+     * example method: crawl wiki category namespace
+     */
     public static void crawlCategory(){
         // path to special:random/category namespace
         String path = "/wiki/special:random/category";

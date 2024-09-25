@@ -80,6 +80,7 @@ public class Webpage {
      * link getter
      * 
      * @return attributes or html info
+     * @throws NoLinksFoundException if no links found on page
      */
     public List<String> getLinks() throws NoLinksFoundException{
         if (this.links.isEmpty()) {
