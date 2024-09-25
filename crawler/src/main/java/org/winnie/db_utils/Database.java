@@ -29,19 +29,20 @@ public class Database {
 
         // db url
         this.url = "jdbc:sqlite:" + path;
-        this.connection = connect();
+        this.connection = connect(db);
     }
 
     /**
      * method establishes db connection
      * 
+     * @param name - db name
      * @return connection
      */
-    private Connection connect() {
+    private Connection connect(String db) {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(this.url);
-            System.out.println("-----database connection established-----");
+            System.out.println("-----" + db + " connection established-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -68,7 +69,7 @@ public class Database {
         try {
             Statement statement = this.connection.createStatement();
             statement.execute(query);
-            System.out.println("-----table created-----");
+            System.out.println("-----" + table + " table created-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -85,14 +86,14 @@ public class Database {
      */
     public void insertData(String table, String column1, String value1, String column2, String value2) {
 
-        String query = "INSERT INTO " + table + "(" + column1 + ", "+column2+") VALUES (?, ?)";
+        String query = "INSERT INTO " + table + "(" + column1 + ", " + column2 + ") VALUES (?, ?)";
 
         try {
             PreparedStatement statement = this.connection.prepareStatement(query);
             statement.setString(1, value1);
             statement.setString(2, value2);
             statement.execute();
-            System.out.println("-----" + column1 + ":" + value1 + " and " + column2 + ":" + value2 + " inserted to "
+            System.out.println("-----" + column1 + ": " + value1 + " and " + column2 + ": " + value2 + " inserted to "
                     + table + "-----");
         } catch (SQLException e) {
             System.out.println(e.getMessage());

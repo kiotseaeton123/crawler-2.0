@@ -1,5 +1,6 @@
 package org.winnie.wiki_utils;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -134,7 +135,16 @@ public class WikiCrawler {
         Database db = new Database("geodata.db");
         IP2GeoResolver resolver = new IP2GeoResolver(db);
 
-        // save anonumous IPs to db
+        // path to db file about to create
+        String base = System.getProperty("user.dir");
+        String path = base + File.separator + ".." + File.separator + "data" + File.separator + "anonusers.db";
+        // delete if it already exists
+        File dbFile = new File(path);
+        if (dbFile.exists()) {
+            dbFile.delete();
+            System.out.println("-----existing db file deleted-----");
+        }
+        // create db file and write
         Database anon_db = new Database("anonusers.db");
         anon_db.createTable("user",
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, country TEXT");
@@ -158,8 +168,8 @@ public class WikiCrawler {
                 // insert to db
                 anon_db.insertData("user", "username", ip, "country", geolocation.getValue());
 
-            // close db
-            anon_db.close();
+                // close db
+                anon_db.close();
 
             } else {
                 System.out.println("ip not found");
