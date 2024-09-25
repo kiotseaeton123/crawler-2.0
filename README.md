@@ -7,6 +7,8 @@
 
 - `src/main` contains web crawler application and `src/test` contains unit tests for utility classes
 
+- project documentation in `apidocs.zip`
+
 ## Design
 - Object Oriented design to support multi-site and multi-page crawling
 
