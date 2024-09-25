@@ -3,7 +3,7 @@
 
 - project contains a complete ip to geolocation resolver package `geolocation_utils`, using MaxMind's free geolocation database GeoLite2 
 
-- `data`directory contains data processing scripts
+- `data`directory contains data processing scripts and outputs `geodata.db` 
 
 - `src/main` contains web crawler application and `src/test` contains unit tests for utility classes
 
