@@ -18,7 +18,7 @@
 
 - Robots txt cached in singleton class, disallowed links are filtered at creation of Webpage instance
 
-- example project crawls wiki's Special:Random/Categories namespace and subsequent links, extracts all users in edit history of each topic, creates a User instance for each contributor, and resolves network address of anonymous contributors
+- example project crawls wiki's Special:Random/Categories namespace and subsequent links, extracts all users in edit history of each topic and resolves network address of anonymous contributors
 
 ## Instructions 
 1. crawlers written in different languages, so clone branch of interest 
