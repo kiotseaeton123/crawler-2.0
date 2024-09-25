@@ -8,7 +8,7 @@
 - Load into database as network address range `ipstart`-`ipend`
 - ipv4 addresses as SQLite INTEGER
 - ipv6 as BLOBs, as they exceed size of SQLite INTEGERs
-- ip ranges and ip-`geoname_id` indexed for efficient querying
+- ip ranges and ip to`geoname_id` indexed for efficient querying
 
 ### Convenient Tools for Data Processing
 - `sed/awk` for stream handling large files

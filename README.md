@@ -1,5 +1,11 @@
 ## About
-- use web crawler to tap into the power of systematic data extraction, large scale information retrieval, and real time web monitoring
+- web crawler designed to tap into the power of systematic data extraction, large scale information retrieval, and real time web monitoring
+
+- project contains a complete ip to geolocation resolver package `geolocation_utils`, using MaxMind's free geolocation database GeoLite2 
+
+- `data`directory contains data processing scripts
+
+- `src/main` contains web crawler application and `src/test` contains unit tests for utility classes
 
 ## Design
 - Object Oriented design to support multi-site and multi-page crawling
@@ -8,9 +14,7 @@
 
 - Robots txt cached in singleton class, disallowed links are filtered at creation of Webpage instance
 
-- example project crawls wiki's Special:Random/Categories namespace and subsequent links, extracts all users in edit history of each topic and creates a User instance for each contributor
-
-- working on geolocation resolver for anonymous contributors, whose username is stored as an IP address
+- example project crawls wiki's Special:Random/Categories namespace and subsequent links, extracts all users in edit history of each topic, creates a User instance for each contributor, and resolves network address of anonymous contributors
 
 ## Instructions 
 1. crawlers written in different languages, so clone branch of interest 
