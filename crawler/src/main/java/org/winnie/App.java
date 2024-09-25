@@ -1,6 +1,6 @@
 package org.winnie;
 
-import org.winnie.db_utils.Table;
+import org.winnie.db_utils.Database;
 import org.winnie.utils.NoLinksFoundException;
 import org.winnie.utils.Webpage;
 import org.winnie.utils.User;
@@ -17,7 +17,7 @@ public class App {
 
     public static void main(String[] args) {
         // read geodata.db
-        Table.createTables();
+
         
         // start crawling
         crawlCategory();
