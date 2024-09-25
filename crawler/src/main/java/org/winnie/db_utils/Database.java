@@ -72,9 +72,9 @@ public class Database {
     /**
      * method inserts data to table in db
      * 
-     * @param table
-     * @param column
-     * @param value
+     * @param table - db table
+     * @param column - db column
+     * @param value - value to insert to table
      */
     public void insertData(String table, String column, String value) {
 
@@ -91,11 +91,11 @@ public class Database {
     /**
      * method inserts 2 fields to a table
      * 
-     * @param table
-     * @param column1
-     * @param value1
-     * @param column2
-     * @param value2
+     * @param table - db table
+     * @param column1 - first column
+     * @param value1 - first data
+     * @param column2 - second column
+     * @param value2 - second data
      */
     public void insertData(String table, String column1, String value1, String column2, String value2) {
 
@@ -132,8 +132,8 @@ public class Database {
 
     /**
      * method to query table field, returns all rows in field
-     * @param table
-     * @param column
+     * @param table - db table
+     * @param column - db column
      * @return List<String>
      */
     public List<String> queryColumn(String table, String column) {
@@ -153,9 +153,9 @@ public class Database {
 
     /**
      * this method queries table field with condition
-     * @param table
-     * @param column
-     * @param condition
+     * @param table - db table
+     * @param column - db column
+     * @param condition - WHERE condition
      * @return String
      */
     public String queryElement(String table, String column, String condition) {

@@ -12,8 +12,8 @@ public class User {
 
     /**
      * constructor for general user
-     * @param username
-     * @param userlink
+     * @param username - user username
+     * @param userlink - user userlink
      */
     public User(String username, String userlink) {
         this(username, userlink, false);

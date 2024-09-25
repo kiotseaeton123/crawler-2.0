@@ -17,7 +17,7 @@ public class IP2GeoResolver {
 
     /**
      * constructor stores database connection
-     * @param db
+     * @param db - database instance
      */
     public IP2GeoResolver(Database db) {
         this.connection = db.getConnection();
@@ -25,7 +25,7 @@ public class IP2GeoResolver {
 
     /**
      * method resolves ipv4 to geolocation
-     * @param ip
+     * @param ip - ipv4 address
      * @return
      */
     public Pair<String, String> resolveIPv4(String ip) {
@@ -52,7 +52,7 @@ public class IP2GeoResolver {
 
     /**
      * method resolves ipv6 to geolocation
-     * @param ip
+     * @param ip - ipv6 address
      * @return
      */
     public Pair<String, String> resolveIPv6(String ip) {

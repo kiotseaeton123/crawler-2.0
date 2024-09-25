@@ -12,8 +12,8 @@ public class Pair<K,V> {
 
     /**
      * constructor takes two generic objects
-     * @param key
-     * @param value
+     * @param key - first object
+     * @param value - second object
      */
     public Pair(K key,V value){
         this.key=key;

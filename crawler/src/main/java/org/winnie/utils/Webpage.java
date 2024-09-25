@@ -21,7 +21,7 @@ public class Webpage {
 
     /**
      * constructor with url parameter, css query for extracting links defaults to generic link a[href]
-     * @param url
+     * @param url - web page url
      */
     public Webpage(String url) {
         this(url, "", "a[href]");
@@ -29,8 +29,8 @@ public class Webpage {
 
     /**
      * constructor with url and path parameter to web page, css query for extracting links defaults to generic link a[href]
-     * @param url
-     * @param path
+     * @param url - web page url
+     * @param path - web page path
      */
     public Webpage(String url, String path) {
         this(url, path, "a[href]");
@@ -40,7 +40,7 @@ public class Webpage {
      * webpage constructor fetches html and links according to css selector, use
      * generic link selector if none provided
      * 
-     * @param url
+     * @param url - web page url
      * @param path  - url path
      * @param query - cssQuery, use css selector to extract elements from document
      * 
