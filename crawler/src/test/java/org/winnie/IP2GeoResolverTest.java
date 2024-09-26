@@ -32,7 +32,7 @@ public class IP2GeoResolverTest {
 
     @Test
     public void testResolveIP6() {
-        Pair<String, String> result = resolver.resolveIPv6("2001:0200:0000:0000:0000:0000:0000:0001");
+        Pair<String, String> result = resolver.resolveIPv6("2001:0200:0000:0000:0000:0000:0000:AAAA");
         assertEquals(result, new Pair<>("AS", "JP"));
     }
 

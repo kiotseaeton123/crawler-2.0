@@ -54,7 +54,7 @@ public class Webpage {
             // get web document from url, save redirected url, and record response time
             long timestamp = System.currentTimeMillis();
 
-            Connection connection = Jsoup.connect(this.url).followRedirects(true);
+            Connection connection = Jsoup.connect(this.url).followRedirects(true).header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
             Document document = connection.get();
             this.url = connection.response().url().toString();
 
